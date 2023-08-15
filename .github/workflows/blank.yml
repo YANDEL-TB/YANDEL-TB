@@ -1,0 +1,37 @@
+# Este es un flujo de trabajo básico para ayudarlo a comenzar con Acciones
+
+</HTML> Forttoxics games
+
+
+# Controla cuando se ejecutará el flujo de trabajo
+en: Games 
+  # Dispara el flujo de trabajo en eventos de solicitud de empuje o extracción, pero solo para la rama "principal"
+ empujar:
+ ramas: [ "principal" ]
+ pull_request:
+ ramas: [ "principal" ]
+
+  # Le permite ejecutar este flujo de trabajo manualmente desde la pestaña Acciones
+ workflow_dispatch:
+
+# Una ejecución de flujo de trabajo se compone de uno o más trabajos que pueden ejecutar secuencias o paralelos
+travajos:
+  # Este flujo de trabajo contiene un solo trabajo llamado "construir"
+ construir:
+    # El tipo de corredor en el que se ejecutará el trabajo
+ correr: ubuntu-latest
+
+    # Los pasos representan una secuencia de tareas que se ejecutarán como parte del trabajo
+ pasos:
+      # Revisa su repositorio en $ GITHUB_WORKSPACE, para que su trabajo pueda acceder a él
+      - usos: acciones / checkout @ v3
+
+      # Ejecuta un solo comando usando el shell de corredores
+      - nombre: Ejecute un script de una línea
+ correr: echo Hola, mundo!
+
+      # Ejecuta un conjunto de comandos usando el shell de corredores
+      - nombre: Ejecute un script multilínea
+ correr: |
+ echo Agregar otras acciones para construir,
+ prueba de eco e implementa tu proyecto.
